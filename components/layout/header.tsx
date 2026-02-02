@@ -85,11 +85,12 @@ export function Header() {
         >
           <Image
             src="/clinica-san-gabriel-logo.svg"
-            alt=""
-            width={180}
-            height={50}
+            alt={CLINIC.name}
+            width={178}
+            height={48}
             className="h-10 w-auto"
             priority
+            unoptimized
           />
         </Link>
 

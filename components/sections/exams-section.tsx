@@ -45,7 +45,7 @@ function ExamCard({
       <div className="min-w-0 overflow-hidden rounded-b-2xl">
         <Card className="rounded-none border-0 border-t-0 shadow-none">
         <CardContent className="flex flex-col items-center px-6 py-6 text-center">
-        <div className="mb-4 flex size-14 items-center justify-center rounded-xl bg-primary/10 text-primary">
+        <div className="mb-4 flex size-14 items-center justify-center rounded-xl bg-primary/12 text-primary">
           {Icon && <Icon className="size-7" aria-hidden />}
         </div>
         <h3 className="text-lg font-semibold">{exam.name}</h3>

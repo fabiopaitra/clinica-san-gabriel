@@ -265,7 +265,7 @@ function CarouselDots({ count, className, ...props }: { count: number } & React.
             "h-1.5 rounded-sm transition-all",
             selectedIndex === i
               ? "w-8 bg-primary"
-              : "w-5 bg-primary/25 hover:bg-primary/40"
+              : "w-5 bg-primary/15 hover:bg-primary/30"
           )}
         />
       ))}

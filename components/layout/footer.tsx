@@ -19,9 +19,10 @@ export function Footer() {
               <Image
                 src="/clinica-san-gabriel-logo.svg"
                 alt={CLINIC.name}
-                width={160}
-                height={44}
+                width={178}
+                height={48}
                 className="h-9 w-auto"
+                unoptimized
               />
             </Link>
             <p className="text-base text-muted-foreground leading-relaxed">
