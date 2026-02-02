@@ -1,9 +1,13 @@
 import { HeroSection } from "@/components/sections/hero-section";
+import { SpecialtiesSection } from "@/components/sections/specialties-section";
+import { ExamsSection } from "@/components/sections/exams-section";
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       <HeroSection />
+      <SpecialtiesSection />
+      <ExamsSection />
 
       {/* Disclaimer médico - obrigatório para clínicas */}
       <section

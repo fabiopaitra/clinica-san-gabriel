@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { Button } from "@/components/ui/button";
 import { CLINIC } from "@/lib/clinic-data";
 
@@ -60,23 +62,24 @@ export function HeroSection() {
           saúde ocular.
         </p>
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
-          <Button variant="whatsapp" size="xl" asChild>
+          <Button variant="default" size="xl" asChild>
             <a
               href={CLINIC.whatsapp}
               target="_blank"
               rel="noopener noreferrer"
+              className="inline-flex items-center gap-2"
             >
-              Agende sua consulta agora
+              <WhatsAppIcon className="size-6" />
+              Agende sua consulta pelo WhatsApp
             </a>
           </Button>
-          <Button
-            variant="secondary"
-            size="xl"
-            className="bg-white/95 text-foreground hover:bg-white"
-            asChild
-          >
-            <a href={`tel:${CLINIC.phone}`}>
-              Ligar: {CLINIC.phoneFormatted}
+          <Button variant="secondary" size="xl" asChild>
+            <a
+              href={`tel:${CLINIC.phone}`}
+              className="inline-flex items-center gap-2"
+            >
+              <Phone className="size-6" aria-hidden />
+              Ligue para agendar sua consulta
             </a>
           </Button>
         </div>
