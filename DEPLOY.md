@@ -24,7 +24,7 @@ O vídeo (70MB) não está no repositório. Hospede no Vercel Blob:
 
 1. Acesse [Vercel Dashboard](https://vercel.com) → seu projeto
 2. Aba **Storage** → **Create Database** → **Blob**
-3. Nome: `clinica-media`
+3. Nome: `clinica-san-gabriel-blob`
 
 ### 3.2 Upload do vídeo
 
