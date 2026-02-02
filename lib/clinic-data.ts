@@ -37,6 +37,11 @@ export const CLINIC = {
 
   email: "contato@clinicamedicasangabriel.com.br",
   domain: "https://clinicamedicasangabriel.com.br",
+
+  /** URL do vídeo do hero (Vercel Blob CDN). Fallback: /clinica-san-gabriel.mp4 em dev */
+  heroVideoUrl:
+    process.env.NEXT_PUBLIC_HERO_VIDEO_URL || "/clinica-san-gabriel.mp4",
+  heroPosterUrl: "/clinica-san-gabriel.jpg",
 } as const;
 
 export const NAV_LINKS = [

@@ -22,6 +22,9 @@
 
 # misc
 .DS_Store
+
+# Vídeo grande - hospedado no Vercel Blob CDN
+public/clinica-san-gabriel.mp4
 *.pem
 
 # debug
