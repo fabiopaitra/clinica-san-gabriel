@@ -44,6 +44,70 @@ export const CLINIC = {
   heroPosterUrl: "/clinica-san-gabriel.jpg",
 } as const;
 
+export const SPECIALTIES = {
+  ophthalmology: {
+    title: "Oftalmologia",
+    description:
+      "Atendimento especializado em saúde ocular para diagnóstico, prevenção e tratamento de doenças oculares. Nossa equipe utiliza tecnologia de ponta para exames precisos e diagnósticos acurados.",
+    features: [
+      "Consulta oftalmológica completa",
+      "Prevenção de doenças oculares",
+      "Diagnóstico precoce",
+      "Tratamento personalizado",
+    ],
+  },
+} as const;
+
+export const EXAMS = [
+  {
+    lucideIcon: "Ruler",
+    name: "Paquimetria",
+    description:
+      "Medição da espessura da córnea para diagnóstico de doenças oculares.",
+  },
+  {
+    lucideIcon: "Map",
+    name: "Topografia Corneana",
+    description:
+      "Mapeamento detalhado da superfície da córnea para diagnóstico preciso.",
+  },
+  {
+    lucideIcon: "Microscope",
+    name: "Microscopia",
+    description:
+      "Exame microscópico para análise detalhada das estruturas oculares.",
+  },
+  {
+    lucideIcon: "ScanEye",
+    name: "Mapeamento de Retina",
+    description: "Avaliação completa da retina para detectar problemas oculares.",
+  },
+  {
+    lucideIcon: "Contrast",
+    name: "Teste de Sensibilidade de Contraste",
+    description:
+      "Avaliação da capacidade de distinguir diferentes níveis de contraste.",
+  },
+  {
+    lucideIcon: "Move",
+    name: "Exame de Motilidade Ocular",
+    description:
+      "Avaliação dos movimentos dos olhos e coordenação ocular.",
+  },
+  {
+    lucideIcon: "Gauge",
+    name: "Tonometria",
+    description:
+      "Medição da pressão intraocular para detecção de glaucoma.",
+  },
+  {
+    lucideIcon: "Sparkles",
+    name: "Potencial de Acuidade",
+    description:
+      "Teste para avaliar o potencial máximo de visão do paciente.",
+  },
+] as const;
+
 export const NAV_LINKS = [
   { href: "/", label: "Início" },
   { href: "/#especialidades", label: "Especialidades" },
