@@ -5,6 +5,8 @@ import { Header, Footer, WhatsAppFAB, SkipLink } from "@/components/layout";
 import { CLINIC } from "@/lib/clinic-data";
 import "./globals.css";
 
+const SHARE_TAGLINE = "Oftalmologia em Colombo, PR - Exames e consultas";
+
 const sourceSans = Source_Sans_3({
   variable: "--font-sans-app",
   subsets: ["latin", "latin-ext"],
@@ -34,8 +36,7 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     siteName: CLINIC.name,
     title: `${CLINIC.name} | Oftalmologia em Colombo, PR`,
-    description:
-      "Clínica de oftalmologia em Colombo. Exames completos, paquimetria, topografia, mapeamento de retina. Parceria Hospital de Olhos do Paraná. Agende via WhatsApp.",
+    description: SHARE_TAGLINE,
     url: CLINIC.domain,
     images: [
       {
@@ -49,8 +50,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${CLINIC.name} | Oftalmologia em Colombo, PR`,
-    description:
-      "Clínica de oftalmologia em Colombo. Exames completos, paquimetria, topografia, mapeamento de retina. Parceria Hospital de Olhos do Paraná. Agende via WhatsApp.",
+    description: SHARE_TAGLINE,
   },
   robots: {
     index: true,
