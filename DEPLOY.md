@@ -1,11 +1,11 @@
 # Deploy - Clínica San Gabriel
 
-## 0. Banco de dados (Vercel Postgres) e agendamentos
+## 0. Banco de dados (Postgres) e agendamentos
 
 Para o agendamento de consultas e o painel admin funcionarem:
 
-1. No Vercel Dashboard → seu projeto → **Storage** → **Create Database** → **Postgres** (ou use a migração do Vercel Postgres para Neon, se indicado).
-2. Conecte o banco ao projeto; o Vercel define automaticamente `POSTGRES_URL` (e variáveis relacionadas).
+1. Use um Postgres compatível com o driver **Neon serverless** (HTTP): [Neon](https://neon.tech) ou, se ainda tiver, um banco criado pelo Vercel (o app usa `@neondatabase/serverless`; o antigo Vercel Postgres foi descontinuado — veja [guia de migração para Neon](https://neon.com/docs/guides/vercel-postgres-transition-guide)).
+2. Conecte o banco ao projeto: defina **POSTGRES_URL** (ou **DATABASE_URL**) com a connection string no Vercel (Settings → Environment Variables).
 3. Rode as migrações (localmente com `POSTGRES_URL` no `.env.local`, ou no build):
    ```bash
    npm run db:push
