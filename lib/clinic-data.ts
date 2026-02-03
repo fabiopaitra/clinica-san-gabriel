@@ -19,9 +19,14 @@ export const CLINIC = {
     city: "Colombo",
     state: "PR",
     zip: "83402-000",
-    landmark: "ao lado do Detran",
+    landmark: "ao lado do Detran de Colombo",
     full: "Rua André Skrok, 26, Sala 01, São Gabriel, Colombo - PR, CEP 83402-000",
     mapsUrl: "https://maps.google.com/?q=Rua+André+Skrok+26+Colombo+PR",
+    /** Embed src from Google Maps Share > Embed a map */
+    mapsEmbedSrc:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3605.6395875150865!2d-49.2024918!3d-25.3498724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce966b2cfb26d%3A0xfb90d01fe725fdb1!2sCl%C3%ADnica%20M%C3%A9dica%2C%20oftalmologia%2C%20consultas%20e%20exames%20em%20Colombo%20%E2%80%93%20PR!5e0!3m2!1sen!2sbr!4v1770082007622!5m2!1sen!2sbr",
+    /** Coordinates for schema.org (from embed) */
+    geo: { lat: -25.3498724, lng: -49.2024918 },
   },
 
   hours: {

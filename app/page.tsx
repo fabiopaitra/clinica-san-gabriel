@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { SpecialtiesSection } from "@/components/sections/specialties-section";
 import { ExamsSection } from "@/components/sections/exams-section";
 import { ConveniosSection } from "@/components/sections/convenios-section";
+import { LocalizacaoSection } from "@/components/sections/localizacao-section";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <SpecialtiesSection />
       <ExamsSection />
       <ConveniosSection />
+      <LocalizacaoSection />
 
       {/* Disclaimer médico - obrigatório para clínicas */}
       <section
