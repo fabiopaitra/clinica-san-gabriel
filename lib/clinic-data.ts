@@ -123,6 +123,35 @@ export const CONVENIOS = [
   { name: "Porto Saúde", color: "#003366", textColor: "#ffffff" },
 ] as const;
 
+/** Perguntas frequentes em oftalmologia */
+export const FAQ = [
+  {
+    question: "Com que frequência devo ir ao oftalmologista?",
+    answer:
+      "Crianças: primeiro exame aos 6 meses, aos 3 anos e antes da escola. Adultos (20–39 anos): a cada 3–5 anos. Adultos (40–64 anos): a cada 2–4 anos. Idosos (65+): anualmente. Diabéticos: anualmente com fundo de olho.",
+  },
+  {
+    question: "Usar óculos piora ou deixa o olho preguiçoso?",
+    answer:
+      "Não. Óculos com grau correto não causam dependência nem pioram a visão. Eles apenas corrigem o problema refrativo, permitindo enxergar com nitidez. O mito de que o olho fica preguiçoso é falso.",
+  },
+  {
+    question: "Quando devo procurar o oftalmologista com urgência?",
+    answer:
+      "Procure atendimento imediato em caso de: perda súbita de visão, dor ocular intensa, trauma no olho, vermelhidão com dor e sensibilidade à luz, flashes ou moscas volantes repentinas, visão dupla súbita ou secreção ocular abundante.",
+  },
+  {
+    question: "Usar celular e computador prejudica a visão?",
+    answer:
+      "O uso prolongado de telas não causa danos permanentes, mas pode provocar cansaço visual, olhos secos e dor de cabeça. Piscamos menos ao usar dispositivos digitais. Recomenda-se a regra 20-20-20: a cada 20 minutos, olhe algo a 6 metros por 20 segundos.",
+  },
+  {
+    question: "O que esperar na primeira consulta? Quais exames são feitos?",
+    answer:
+      "Na consulta oftalmológica, são realizados: acuidade visual (nitidez), tonometria (pressão ocular), refração (determinação do grau), biomicroscopia e fundoscopia (avaliação da retina). Em alguns casos, a pupila é dilatada. Traga óculos, lentes ou receitas anteriores.",
+  },
+] as const;
+
 export const NAV_LINKS = [
   { href: "/", label: "Início" },
   { href: "/#especialidades", label: "Especialidades" },
