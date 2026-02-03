@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu } from "lucide-react";
 
+import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -15,8 +17,10 @@ import {
 import { CLINIC, NAV_LINKS } from "@/lib/clinic-data";
 
 function MobileNav() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button
           variant="ghost"
@@ -29,14 +33,29 @@ function MobileNav() {
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="w-[85vw] max-w-sm"
+        className="w-[85vw] max-w-sm bg-muted"
         aria-label="Menu de navegação"
       >
         <SheetHeader>
           <SheetTitle className="sr-only">Menu</SheetTitle>
         </SheetHeader>
+        <Link
+          href="/"
+          onClick={() => setOpen(false)}
+          className="flex items-center justify-start mt-2 -mx-2 px-4 py-2 rounded-md hover:bg-accent w-fit"
+          aria-label={`${CLINIC.name} - Página inicial`}
+        >
+          <Image
+            src="/clinica-san-gabriel-icon.svg"
+            alt=""
+            width={48}
+            height={48}
+            className="h-12 w-auto"
+            unoptimized
+          />
+        </Link>
         <nav
-          className="mt-8 flex flex-col gap-1"
+          className="mt-4 flex flex-col gap-1"
           aria-label="Navegação principal"
         >
           {NAV_LINKS.map((link) => (
@@ -44,15 +63,16 @@ function MobileNav() {
               key={link.href}
               href={link.href}
               className="min-h-[48px] px-4 py-3 text-lg font-medium text-foreground hover:bg-accent hover:text-accent-foreground rounded-md flex items-center -mx-2"
+              onClick={() => setOpen(false)}
             >
               {link.label}
             </Link>
           ))}
-          <div className="mt-6 pt-4 border-t">
+          <div className="mt-6 pt-4 border-t px-2">
             <Button
               variant="whatsapp"
               size="lg"
-              className="w-full"
+              className="w-full min-h-[48px] px-4 py-3 flex items-center justify-center gap-2 text-lg font-medium"
               asChild
             >
               <a
@@ -60,7 +80,9 @@ function MobileNav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Falar no WhatsApp"
+                onClick={() => setOpen(false)}
               >
+                <WhatsAppIcon className="size-5 shrink-0" />
                 Agendar via WhatsApp
               </a>
             </Button>

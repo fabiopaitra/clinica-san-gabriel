@@ -157,7 +157,6 @@ export const NAV_LINKS = [
   { href: "/#especialidades", label: "Especialidades" },
   { href: "/#exames", label: "Exames" },
   { href: "/#convenios", label: "Convênios" },
-  { href: "/#horarios", label: "Horários" },
   { href: "/#localizacao", label: "Localização" },
   { href: "/#faq", label: "Perguntas Frequentes" },
 ] as const;

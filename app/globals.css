@@ -142,6 +142,8 @@
   html {
     /* Suporta zoom do usuário - respeita preferências de tamanho */
     font-size: 100%;
+    /* Evita que títulos de seção fiquem atrás do header ao clicar em âncoras */
+    scroll-padding-top: 2rem; /* header h-16 (4rem) + pequeno respiro */
   }
   body {
     @apply bg-background text-foreground;
