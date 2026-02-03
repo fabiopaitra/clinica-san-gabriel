@@ -152,11 +152,37 @@ export const FAQ = [
   },
 ] as const;
 
+/** Especialidades disponíveis para agendamento online */
+export const SCHEDULING_SPECIALTIES = [
+  {
+    id: "oftalmologia",
+    label: "Oftalmologia",
+    description:
+      "Consulta oftalmológica completa. Exames e acompanhamento da saúde ocular.",
+  },
+  {
+    id: "exame-toxicologico-detran",
+    label: "Exame toxicológico (Detran)",
+    description:
+      "Exame toxicológico para renovação ou primeira CNH, conforme exigência do Detran.",
+  },
+] as const;
+
+/** Dia da semana: 0 = Domingo, 1 = Segunda, ..., 6 = Sábado. Apenas dias com atendimento. */
+export const SCHEDULING_WORKING_DAYS = [1, 2, 3, 4, 5, 6] as const; // Seg a Sáb
+
+/** Horários de atendimento para geração de slots (30 min). Fim é exclusivo (último slot termina antes do end). */
+export const SCHEDULING_HOURS = {
+  weekdays: { start: "08:00", end: "18:30" }, // 08:00 até 18:00 (slot 18:00-18:30)
+  saturday: { start: "08:00", end: "12:00" }, // 08:00 até 11:30
+} as const;
+
 export const NAV_LINKS = [
   { href: "/", label: "Início" },
+  { href: "/agendar", label: "Agendar" },
   { href: "/#especialidades", label: "Especialidades" },
   { href: "/#exames", label: "Exames" },
   { href: "/#convenios", label: "Convênios" },
   { href: "/#localizacao", label: "Localização" },
-  { href: "/#faq", label: "Perguntas Frequentes" },
+  { href: "/#faq", label: "Perguntas" },
 ] as const;
