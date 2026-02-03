@@ -108,6 +108,16 @@ export const EXAMS = [
   },
 ] as const;
 
+/** Convênios aceitos – placeholder colors até ter logos reais */
+export const CONVENIOS = [
+  { name: "Amil", color: "#0066B3", textColor: "#ffffff" },
+  { name: "Bradesco Saúde", color: "#CC092F", textColor: "#ffffff" },
+  { name: "SulAmérica Saúde", color: "#00A859", textColor: "#ffffff" },
+  { name: "Unimed", color: "#00A651", textColor: "#ffffff" },
+  { name: "NotreDame Intermédica", color: "#E31837", textColor: "#ffffff" },
+  { name: "Porto Saúde", color: "#003366", textColor: "#ffffff" },
+] as const;
+
 export const NAV_LINKS = [
   { href: "/", label: "Início" },
   { href: "/#especialidades", label: "Especialidades" },

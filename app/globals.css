@@ -159,3 +159,16 @@
     oklch(0.97 0.01 85) 100%
   );
 }
+
+/* Convênios: horizontal scroll (left to right) */
+@keyframes convenios-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-convenios-scroll {
+  animation: convenios-scroll 25s linear infinite;
+}
