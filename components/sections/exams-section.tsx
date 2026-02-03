@@ -100,12 +100,19 @@ function ExamCard({
 
 export function ExamsSection() {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const handleCarouselApi = React.useCallback((api: CarouselApi | undefined) => {
-    if (!api) return;
-    const update = () => setSelectedIndex(api.selectedScrollSnap());
-    update();
-    api.on("select", update);
+  const apiRef = React.useRef<CarouselApi | null>(null);
+  const onSelect = React.useCallback(() => {
+    const api = apiRef.current;
+    if (api) setSelectedIndex(api.selectedScrollSnap());
   }, []);
+  const handleCarouselApi = React.useCallback((api: CarouselApi | undefined) => {
+    const prev = apiRef.current;
+    if (prev) prev.off("select", onSelect);
+    apiRef.current = api ?? null;
+    if (!api) return;
+    onSelect();
+    api.on("select", onSelect);
+  }, [onSelect]);
 
   return (
     <section
