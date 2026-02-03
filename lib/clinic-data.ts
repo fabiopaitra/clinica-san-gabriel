@@ -84,13 +84,13 @@ export const EXAMS = [
   },
   {
     lucideIcon: "Contrast",
-    name: "Teste de Sensibilidade de Contraste",
+    name: "Sensibilidade Contraste",
     description:
       "Avaliação da capacidade de distinguir diferentes níveis de contraste.",
   },
   {
     lucideIcon: "Move",
-    name: "Exame de Motilidade Ocular",
+    name: "Motilidade Ocular",
     description:
       "Avaliação dos movimentos dos olhos e coordenação ocular.",
   },

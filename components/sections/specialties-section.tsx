@@ -15,7 +15,7 @@ export function SpecialtiesSection() {
   return (
     <section
       id="especialidades"
-      className="bg-gradient-to-b from-background to-muted/30"
+      className="bg-white"
       aria-labelledby="specialties-title"
     >
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
