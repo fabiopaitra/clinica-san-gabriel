@@ -113,14 +113,25 @@ export const EXAMS = [
   },
 ] as const;
 
-/** Convênios aceitos – placeholder colors até ter logos reais */
+/** Convênios aceitos – brand colors para uso em UI (pills/logos) */
 export const CONVENIOS = [
+  { name: "Abra Saúde", color: "#475569", textColor: "#ffffff" },
   { name: "Amil", color: "#0066B3", textColor: "#ffffff" },
   { name: "Bradesco Saúde", color: "#CC092F", textColor: "#ffffff" },
-  { name: "SulAmérica Saúde", color: "#00A859", textColor: "#ffffff" },
-  { name: "Unimed", color: "#00A651", textColor: "#ffffff" },
-  { name: "NotreDame Intermédica", color: "#E31837", textColor: "#ffffff" },
-  { name: "Porto Saúde", color: "#003366", textColor: "#ffffff" },
+  { name: "CASSI", color: "#00843D", textColor: "#ffffff" },
+  { name: "Copel", color: "#003366", textColor: "#ffffff" },
+  { name: "GEAP", color: "#005A9C", textColor: "#ffffff" },
+  { name: "Eletrobras", color: "#00A3E0", textColor: "#ffffff" },
+  { name: "ICS", color: "#64748B", textColor: "#ffffff" },
+  { name: "Itaú", color: "#EC7000", textColor: "#ffffff" },
+  { name: "Petrobras", color: "#007F3F", textColor: "#ffffff" },
+  { name: "Postal Saúde", color: "#007B52", textColor: "#ffffff" },
+  { name: "Porto Seguro Saúde", color: "#003366", textColor: "#ffffff" },
+  { name: "Sanepar", color: "#00A651", textColor: "#ffffff" },
+  { name: "São Camilo", color: "#1E3A5F", textColor: "#ffffff" },
+  { name: "Saúde Caixa", color: "#0066B3", textColor: "#ffffff" },
+  { name: "Sul América", color: "#00A859", textColor: "#ffffff" },
+  { name: "Voam", color: "#475569", textColor: "#ffffff" },
 ] as const;
 
 /** Perguntas frequentes em oftalmologia */

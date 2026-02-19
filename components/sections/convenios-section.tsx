@@ -25,9 +25,7 @@ export function ConveniosSection() {
             visão com tranquilidade.
           </p>
           <p className="mt-2 text-lg text-muted-foreground">
-            Trabalhamos com Amil, Bradesco Saúde, SulAmérica, Unimed,
-            NotreDame Intermédica, Porto Saúde e outros. Confira a lista
-            completa e tire dúvidas sobre sua cobertura.
+            Trabalhamos com Amil, Bradesco Saúde, Sul América, Porto Seguro Saúde e outros. Confira a lista completa abaixo e tire dúvidas sobre sua cobertura.
           </p>
           <div className="mt-8">
             <Link
