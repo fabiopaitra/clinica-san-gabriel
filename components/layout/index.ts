@@ -4,6 +4,4 @@ export { WhatsAppFAB } from "./whatsapp-fab";
 export { SkipLink } from "./skip-link";
 export { CtaClickTracker } from "./cta-click-tracker";
 export { SectionViewTracker } from "./section-view-tracker";
-export { ConsentBanner } from "./consent-banner";
-export { ConsentedAnalytics } from "./consented-analytics";
-export { ConsentPreferencesButton } from "./consent-preferences-button";
+export { ThirdPartyAnalytics } from "./third-party-analytics";

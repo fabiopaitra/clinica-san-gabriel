@@ -84,14 +84,25 @@ export default function PoliticaPrivacidadePage() {
               Vercel Analytics e PostHog: estatísticas anônimas, sem cookies.
             </li>
             <li>
-              Google Analytics e Hotjar: usados só com o seu consentimento.
-              Usam cookies, e o Hotjar pode gravar a navegação na página
-              (cliques e rolagem), sem registrar textos digitados.
+              Google Analytics e Hotjar: usam cookies, com base no nosso
+              legítimo interesse em melhorar o site. O Hotjar pode gravar a
+              navegação na página (cliques e rolagem), sem registrar textos
+              digitados.
             </li>
           </ul>
           <p>
-            Você pode mudar sua escolha a qualquer momento em
-            &quot;Preferências de cookies&quot;, no rodapé do site.
+            Você pode bloquear ou apagar esses cookies nas configurações do seu
+            navegador, ou instalar o{" "}
+            <a
+              href="https://tools.google.com/dlpage/gaoptout"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              complemento de desativação do Google Analytics
+            </a>
+            . Para se opor ao uso dos seus dados, fale conosco pelos contatos
+            abaixo.
           </p>
         </section>
 
