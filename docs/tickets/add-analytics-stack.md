@@ -2,6 +2,7 @@
 ticket: add-analytics-stack
 status: implemented
 source: free text
+pr: https://github.com/fabiopaitra/clinica-san-gabriel/pull/4
 updated: 2026-10-15T13:24:31Z
 ---
 # add-analytics-stack: Add PostHog, GA4 and Hotjar with a lead funnel
