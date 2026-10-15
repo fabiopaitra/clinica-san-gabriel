@@ -80,6 +80,8 @@ export default function PoliticaPrivacidadePage() {
           <p>
             <a
               href={`mailto:${CLINIC.email}`}
+              data-track-event="email_click"
+              data-track-location="politica-privacidade"
               className="text-primary hover:underline"
             >
               {CLINIC.email}
@@ -87,6 +89,8 @@ export default function PoliticaPrivacidadePage() {
             {" · "}
             <a
               href={`tel:${CLINIC.phone}`}
+              data-track-event="phone_click"
+              data-track-location="politica-privacidade"
               className="text-primary hover:underline"
             >
               {CLINIC.phoneFormatted}

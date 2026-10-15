@@ -59,6 +59,8 @@ export function Footer() {
                 />
                 <a
                   href={DIRECTIONS_URL}
+                  data-track-event="directions_click"
+                  data-track-location="footer"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-primary hover:underline"
@@ -79,6 +81,8 @@ export function Footer() {
               <p>
                 <a
                   href={`tel:${CLINIC.phone}`}
+                  data-track-event="phone_click"
+                  data-track-location="footer"
                   className="flex items-center gap-3 hover:text-primary hover:underline"
                 >
                   <Phone className="size-4 shrink-0" aria-hidden />
@@ -88,6 +92,8 @@ export function Footer() {
               <p>
                 <a
                   href={CLINIC.whatsapp}
+                  data-track-event="whatsapp_click"
+                  data-track-location="footer"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 hover:text-primary hover:underline"

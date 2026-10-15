@@ -68,6 +68,8 @@ export function HeroSection() {
           <Button variant="default" size="xl" asChild>
             <a
               href={CLINIC.whatsapp}
+              data-track-event="whatsapp_click"
+              data-track-location="hero"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2"
@@ -78,6 +80,8 @@ export function HeroSection() {
           </Button>
           <a
             href={`tel:${CLINIC.phone}`}
+            data-track-event="phone_click"
+            data-track-location="hero"
             className={linkClass}
           >
             <Phone className="size-5 shrink-0" aria-hidden />

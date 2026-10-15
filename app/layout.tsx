@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
 import { Source_Sans_3 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
-import { Header, Footer, WhatsAppFAB, SkipLink } from "@/components/layout";
+import {
+  Header,
+  Footer,
+  WhatsAppFAB,
+  SkipLink,
+  CtaClickTracker,
+} from "@/components/layout";
 import { CLINIC } from "@/lib/clinic-data";
 import "./globals.css";
 
@@ -76,6 +84,9 @@ export default function RootLayout({
         </main>
         <Footer />
         <WhatsAppFAB />
+        <CtaClickTracker />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
