@@ -2,6 +2,7 @@
 ticket: remove-consent-banner
 status: implemented
 source: free text
+pr: https://github.com/fabiopaitra/clinica-san-gabriel/pull/5
 updated: 2026-10-15T18:34:16Z
 ---
 # remove-consent-banner: Load GA4 and Hotjar for every visitor, without a cookie banner
