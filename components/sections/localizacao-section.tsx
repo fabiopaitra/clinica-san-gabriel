@@ -70,6 +70,8 @@ export function LocalizacaoSection() {
           <p className="text-sm text-muted-foreground">
             <Link
               href={DIRECTIONS_URL}
+              data-track-event="directions_click"
+              data-track-location="localizacao"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary hover:underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -94,6 +96,8 @@ export function LocalizacaoSection() {
               />
               <Link
                 href={DIRECTIONS_URL}
+                data-track-event="directions_click"
+                data-track-location="localizacao-mapa"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute inset-0 z-10 flex items-end justify-center p-4 sm:items-center sm:pb-0"

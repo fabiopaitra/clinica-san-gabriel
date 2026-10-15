@@ -64,6 +64,8 @@ export default function TermosUsoPage() {
           <p>
             <a
               href={`mailto:${CLINIC.email}`}
+              data-track-event="email_click"
+              data-track-location="termos-uso"
               className="text-primary hover:underline"
             >
               {CLINIC.email}
@@ -71,6 +73,8 @@ export default function TermosUsoPage() {
             {" · "}
             <a
               href={`tel:${CLINIC.phone}`}
+              data-track-event="phone_click"
+              data-track-location="termos-uso"
               className="text-primary hover:underline"
             >
               {CLINIC.phoneFormatted}

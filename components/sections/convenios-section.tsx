@@ -32,6 +32,8 @@ export function ConveniosSection() {
               href={CLINIC.whatsappMessage(
                 "Olá, gostaria de saber se meu convênio é aceito na clínica."
               )}
+              data-track-event="whatsapp_click"
+              data-track-location="convenios"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-base font-medium text-primary hover:opacity-90 hover:underline focus-visible:outline focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
