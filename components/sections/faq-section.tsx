@@ -2,12 +2,19 @@
 
 import React from "react";
 import { FAQ } from "@/lib/clinic-data";
+import { trackEvent } from "@/lib/analytics";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+function trackFaqOpen(value: string) {
+  if (!value) return;
+  const question = FAQ[Number(value.replace("faq-", ""))]?.question;
+  if (question) trackEvent("faq_open", { question });
+}
 
 export function FAQSection() {
   return (
@@ -31,6 +38,7 @@ export function FAQSection() {
           <Accordion
             type="single"
             collapsible
+            onValueChange={trackFaqOpen}
             className="mt-8"
           >
             {FAQ.map((item, index) => (

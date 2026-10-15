@@ -1,0 +1,87 @@
+# Analytics
+
+The site has one goal: get patients to start a WhatsApp conversation. Analytics tells us which pages, sections and CTAs lead there.
+
+**Every user-facing feature ships with its tracking.** A feature without events is not done.
+
+## Tools
+
+**PostHog sees every visitor. GA4 and Hotjar only see visitors who accept cookies.**
+
+| Tool | What it's for | Cookies | Loads |
+| --- | --- | --- | --- |
+| PostHog | Funnels, events, autocapture. **Source of truth for the funnel** | None (`cookieless_mode: "always"`) | Always, from `instrumentation-client.ts` |
+| GA4 | Traffic sources, Google Ads conversions | Yes | Only after "Aceitar" on the cookie banner |
+| Hotjar | Heatmaps and session recordings | Yes | Only after "Aceitar" on the cookie banner |
+| Vercel Analytics | Page views | None | Always |
+| Vercel Speed Insights | Core Web Vitals | None | Always |
+
+`trackEvent()` in `lib/analytics.ts` sends one event to PostHog, GA4 and Hotjar (Hotjar only gets the event name). Every tool is off when its env var is missing, so dev and preview send nothing unless you configure them.
+
+## Configuration
+
+Set these in Vercel for **Production only**, so preview and dev traffic stays out of the data. See `.env.example`.
+
+| Env var | Where to find it |
+| --- | --- |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | GA4 → Admin → Data streams → Measurement ID (`G-XXXXXXX`) |
+| `NEXT_PUBLIC_HOTJAR_SITE_ID` | Hotjar → Sites & Organizations → Site ID |
+| `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` | PostHog → Project settings → Project token (`phc_…`) |
+| `NEXT_PUBLIC_POSTHOG_REGION` | `us` or `eu`, matching the PostHog Cloud region. Defaults to `us` |
+
+In PostHog, turn on **Cookieless server hash mode** (Project settings → Web analytics). Without it, PostHog drops every event from this site.
+
+PostHog traffic goes through the `/ingest` rewrite in `next.config.ts`, so ad blockers don't drop it.
+
+## Consent
+
+- The cookie banner (`ConsentBanner`) only appears when GA4 or Hotjar is configured.
+- The choice lives in `localStorage` under `analytics-consent` (`granted` / `denied`).
+- "Preferências de cookies" in the footer reopens the banner. Revoking consent reloads the page, because GA4 and Hotjar can't be unloaded once running.
+- The privacy policy (`app/politica-privacidade/page.tsx`, section 5) lists every tool. **Adding a new tool means updating that section.**
+
+## Events
+
+| Event | Properties | Fired from |
+| --- | --- | --- |
+| `whatsapp_click` | `location`: `header`, `mobile-menu`, `hero`, `convenios`, `footer`, `fab` | `data-track-*` attributes |
+| `phone_click` | `location`: `hero`, `footer`, `termos-uso`, `politica-privacidade` | `data-track-*` attributes |
+| `directions_click` | `location`: `localizacao`, `localizacao-mapa`, `footer` | `data-track-*` attributes |
+| `email_click` | `location`: `termos-uso`, `politica-privacidade` | `data-track-*` attributes |
+| `nav_click` | `location`: `header`, `mobile-menu`; `target`: the link's `href` | `data-track-*` attributes |
+| `section_view` | `section`: the section `id`; `path` | `SectionViewTracker`, once per section per page view |
+| `faq_open` | `question` | `FAQSection` |
+
+On top of these, PostHog captures `$pageview` and autocaptures every click, and GA4 captures `page_view` and its enhanced measurement events.
+
+## The funnel
+
+**Page view → section viewed → contact click.**
+
+### PostHog
+
+1. Data management → Actions → New action **Contato**, matching any of `whatsapp_click`, `phone_click`, `directions_click`, `email_click`.
+2. Product analytics → New insight → Funnels, with these steps:
+   1. `$pageview`
+   2. `section_view`
+   3. `whatsapp_click` (or the **Contato** action for every contact channel)
+3. Break down by `location` to compare CTAs, or by `section` on step 2 to see which section leads to clicks.
+4. Save it to a dashboard named **Leads WhatsApp**.
+
+### GA4
+
+1. Admin → Events → mark `whatsapp_click` as a **key event**. Do the same for `phone_click` if calls count as leads.
+2. Admin → Custom definitions → create event-scoped dimensions for `location`, `section` and `question`. GA4 hides event properties in reports until you register them.
+3. Explore → Funnel exploration, with the steps `page_view` → `section_view` → `whatsapp_click`.
+
+GA4 only counts visitors who accepted cookies, so its numbers will be lower than PostHog's. Use PostHog for the funnel, and GA4 for traffic sources and ads.
+
+## Adding tracking to a feature
+
+1. **Link or button that leaves the site, or a contact action:** add `data-track-event` and `data-track-location`. Every other `data-track-*` attribute becomes a property (`data-track-target` → `target`). `CtaClickTracker` does the rest, and it works in server components.
+2. **New section on a page:** give it `<section id="…">` inside `<main>`. `section_view` picks it up automatically.
+3. **Interaction that isn't a link** (accordion, carousel, form step): call `trackEvent()` from the client component.
+4. **Naming:** events are `snake_case`, written as `<object>_<action>` (`faq_open`, `whatsapp_click`). Property values are lowercase `kebab-case` when they're identifiers.
+5. **Never send** patient data, health data or anything a visitor types. CTA type, location and public page copy only.
+6. **Document it:** add the event or the new `location` value to the table above, in the same PR.
+7. **Check it:** in `npm run dev`, every `trackEvent()` call logs `[analytics] <event> {…}` to the browser console.

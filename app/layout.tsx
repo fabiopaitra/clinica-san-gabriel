@@ -9,6 +9,9 @@ import {
   WhatsAppFAB,
   SkipLink,
   CtaClickTracker,
+  SectionViewTracker,
+  ConsentBanner,
+  ConsentedAnalytics,
 } from "@/components/layout";
 import { CLINIC } from "@/lib/clinic-data";
 import "./globals.css";
@@ -84,7 +87,10 @@ export default function RootLayout({
         </main>
         <Footer />
         <WhatsAppFAB />
+        <ConsentBanner />
         <CtaClickTracker />
+        <SectionViewTracker />
+        <ConsentedAnalytics />
         <Analytics />
         <SpeedInsights />
       </body>

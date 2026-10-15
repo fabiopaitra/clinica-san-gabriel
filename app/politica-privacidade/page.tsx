@@ -72,7 +72,31 @@ export default function PoliticaPrivacidadePage() {
         </section>
 
         <section>
-          <h2>5. Contato</h2>
+          <h2>5. Cookies e estatísticas de uso</h2>
+          <p>
+            Para entender como o site é usado e melhorá-lo, coletamos
+            estatísticas de navegação, como páginas visitadas, seções vistas e
+            cliques nos botões de contato. Não enviamos dados de saúde a essas
+            ferramentas.
+          </p>
+          <ul>
+            <li>
+              Vercel Analytics e PostHog: estatísticas anônimas, sem cookies.
+            </li>
+            <li>
+              Google Analytics e Hotjar: usados só com o seu consentimento.
+              Usam cookies, e o Hotjar pode gravar a navegação na página
+              (cliques e rolagem), sem registrar textos digitados.
+            </li>
+          </ul>
+          <p>
+            Você pode mudar sua escolha a qualquer momento em
+            &quot;Preferências de cookies&quot;, no rodapé do site.
+          </p>
+        </section>
+
+        <section>
+          <h2>6. Contato</h2>
           <p>
             Para exercer seus direitos ou tirar dúvidas sobre esta política,
             entre em contato:

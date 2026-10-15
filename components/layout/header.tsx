@@ -62,6 +62,9 @@ function MobileNav() {
             <Link
               key={link.href}
               href={link.href}
+              data-track-event="nav_click"
+              data-track-location="mobile-menu"
+              data-track-target={link.href}
               className="min-h-[48px] px-4 py-3 text-lg font-medium text-foreground hover:bg-accent hover:text-accent-foreground rounded-md flex items-center -mx-2"
               onClick={() => setOpen(false)}
             >
@@ -77,6 +80,8 @@ function MobileNav() {
             >
               <a
                 href={CLINIC.whatsapp}
+                data-track-event="whatsapp_click"
+                data-track-location="mobile-menu"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Falar no WhatsApp"
@@ -125,6 +130,9 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
+              data-track-event="nav_click"
+              data-track-location="header"
+              data-track-target={link.href}
               className="min-h-[44px] px-4 py-2 text-base font-medium text-foreground/90 hover:text-foreground hover:bg-accent rounded-md flex items-center"
             >
               {link.label}
@@ -136,6 +144,8 @@ export function Header() {
           <Button variant="whatsapp" size="lg" className="hidden sm:inline-flex" asChild>
             <a
               href={CLINIC.whatsapp}
+              data-track-event="whatsapp_click"
+              data-track-location="header"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Falar no WhatsApp"
