@@ -131,6 +131,7 @@ export const CONVENIOS = [
   { name: "São Camilo", color: "#1E3A5F", textColor: "#ffffff" },
   { name: "Saúde Caixa", color: "#0066B3", textColor: "#ffffff" },
   { name: "Sul América", color: "#00A859", textColor: "#ffffff" },
+  { name: "Unimed Curitiba", color: "#00A651", textColor: "#ffffff" },
   { name: "Voam", color: "#475569", textColor: "#ffffff" },
 ] as const;
 
