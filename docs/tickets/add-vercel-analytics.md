@@ -2,6 +2,7 @@
 ticket: add-vercel-analytics
 status: implemented
 source: free text
+pr: https://github.com/fabiopaitra/clinica-san-gabriel/pull/3
 updated: 2026-10-15T12:48:34Z
 ---
 # add-vercel-analytics: Add Vercel Analytics and Speed Insights
