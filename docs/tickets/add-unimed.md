@@ -3,6 +3,7 @@ ticket: add-unimed
 status: implemented
 source: free text
 updated: 2026-10-15T12:35:33Z
+pr: https://github.com/fabiopaitra/clinica-san-gabriel/pull/2
 ---
 # add-unimed: Add Unimed Curitiba to the convênios list
 
