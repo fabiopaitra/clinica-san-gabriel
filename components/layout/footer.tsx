@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Clock } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
-import { ConsentPreferencesButton } from "@/components/layout/consent-preferences-button";
 import { CLINIC } from "@/lib/clinic-data";
 
 const DIRECTIONS_URL = `https://www.google.com/maps/dir//${encodeURIComponent(CLINIC.address.full)}`;
@@ -149,7 +148,6 @@ export function Footer() {
             >
               Termos de Uso
             </Link>
-            <ConsentPreferencesButton className="text-xs text-muted-foreground hover:text-foreground hover:underline" />
           </div>
         </div>
       </div>

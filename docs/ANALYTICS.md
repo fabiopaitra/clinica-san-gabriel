@@ -6,13 +6,13 @@ The site has one goal: get patients to start a WhatsApp conversation. Analytics 
 
 ## Tools
 
-**PostHog sees every visitor. GA4 and Hotjar only see visitors who accept cookies.**
+**PostHog is the funnel's source of truth. GA4 and Hotjar add traffic sources and recordings.** All of them load for every visitor; there's no cookie banner.
 
 | Tool | What it's for | Cookies | Loads |
 | --- | --- | --- | --- |
 | PostHog | Funnels, events, autocapture. **Source of truth for the funnel** | None (`cookieless_mode: "always"`) | Always, from `instrumentation-client.ts` |
-| GA4 | Traffic sources, Google Ads conversions | Yes | Only after "Aceitar" on the cookie banner |
-| Hotjar | Heatmaps and session recordings | Yes | Only after "Aceitar" on the cookie banner |
+| GA4 | Traffic sources, Google Ads conversions | Yes | Always, from `ThirdPartyAnalytics` |
+| Hotjar | Heatmaps and session recordings | Yes | Always, from `ThirdPartyAnalytics` |
 | Vercel Analytics | Page views | None | Always |
 | Vercel Speed Insights | Core Web Vitals | None | Always |
 
@@ -33,12 +33,11 @@ In PostHog, turn on **Cookieless server hash mode** (Project settings → Web an
 
 PostHog traffic goes through the `/ingest` rewrite in `next.config.ts`, so ad blockers don't drop it.
 
-## Consent
+## Cookies and LGPD
 
-- The cookie banner (`ConsentBanner`) only appears when GA4 or Hotjar is configured.
-- The choice lives in `localStorage` under `analytics-consent` (`granted` / `denied`).
-- "Preferências de cookies" in the footer reopens the banner. Revoking consent reloads the page, because GA4 and Hotjar can't be unloaded once running.
-- The privacy policy (`app/politica-privacidade/page.tsx`, section 5) lists every tool. **Adding a new tool means updating that section.**
+- There's no cookie banner. GA4 and Hotjar set cookies for every visitor, on the basis of legitimate interest. This is a deliberate choice: the ANPD guidance favours consent for analytics cookies, so get legal sign-off before changing what we collect.
+- Visitors opt out through their browser settings or the GA opt-out add-on, and can object through the clinic's contact details. The privacy policy (`app/politica-privacidade/page.tsx`, section 5) says so.
+- **Adding a new tool means updating that section of the privacy policy.**
 
 ## Events
 
@@ -74,7 +73,7 @@ On top of these, PostHog captures `$pageview` and autocaptures every click, and 
 2. Admin → Custom definitions → create event-scoped dimensions for `location`, `section` and `question`. GA4 hides event properties in reports until you register them.
 3. Explore → Funnel exploration, with the steps `page_view` → `section_view` → `whatsapp_click`.
 
-GA4 only counts visitors who accepted cookies, so its numbers will be lower than PostHog's. Use PostHog for the funnel, and GA4 for traffic sources and ads.
+Ad blockers drop GA4 more often than PostHog, which goes through `/ingest`, so GA4's numbers will be lower. Use PostHog for the funnel, and GA4 for traffic sources and ads.
 
 ## Adding tracking to a feature
 
