@@ -1,6 +1,7 @@
 ---
 ticket: lead-funnel-events
 status: implemented
+pr: https://github.com/fabiopaitra/clinica-san-gabriel/pull/6
 source: free text
 updated: 2026-10-16T20:09:39Z
 ---
