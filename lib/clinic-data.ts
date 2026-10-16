@@ -83,9 +83,9 @@ export const EXAMS = [
   },
   {
     lucideIcon: "Microscope",
-    name: "Microscopia",
+    name: "Microscopia Especular",
     description:
-      "Exame microscópico para análise detalhada das estruturas oculares.",
+      "Avaliação das células da córnea, indicada antes de cirurgias.",
   },
   {
     lucideIcon: "ScanEye",

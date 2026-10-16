@@ -103,11 +103,11 @@ export const EXAM_PAGES: readonly ServicePage[] = [
     ],
     whatsappText:
       "Olá! Vim pelo site e gostaria de agendar o exame de topografia corneana.",
-    relatedExams: ["paquimetria", "microscopia"],
+    relatedExams: ["paquimetria", "microscopia-especular"],
   },
   {
-    slug: "microscopia",
-    name: "Microscopia",
+    slug: "microscopia-especular",
+    name: "Microscopia Especular",
     heading: "Microscopia Especular de Córnea em Colombo – PR",
     description:
       "Microscopia especular em Colombo, PR: avaliação das células da córnea, indicada antes de cirurgias e em doenças da córnea. Agende pelo WhatsApp.",
@@ -144,7 +144,7 @@ export const EXAM_PAGES: readonly ServicePage[] = [
         ],
       },
     ],
-    whatsappText: "Olá! Vim pelo site e gostaria de agendar o exame de microscopia.",
+    whatsappText: "Olá! Vim pelo site e gostaria de agendar o exame de microscopia especular.",
     relatedExams: ["paquimetria", "topografia-corneana"],
   },
   {
@@ -455,7 +455,7 @@ export const SPECIALTY_PAGES: readonly ServicePage[] = [
     relatedExams: [
       "potencial-de-acuidade",
       "topografia-corneana",
-      "microscopia",
+      "microscopia-especular",
       "sensibilidade-contraste",
     ],
   },
