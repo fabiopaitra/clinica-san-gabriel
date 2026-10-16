@@ -3,25 +3,9 @@ import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { Button } from "@/components/ui/button";
 import { CLINIC, DOCTORS } from "@/lib/clinic-data";
 
-function initials(name: string) {
-  return name
-    .replace(/^Dra?\.\s*/, "")
-    .split(" ")
-    .filter((word) => word.length > 2)
-    .slice(0, 2)
-    .map((word) => word[0])
-    .join("");
-}
-
 function DoctorCard({ doctor }: { doctor: (typeof DOCTORS)[number] }) {
   return (
-    <article className="flex flex-col gap-6 rounded-2xl border bg-card p-6 shadow-sm sm:flex-row sm:p-8">
-      <div
-        className="flex size-24 shrink-0 items-center justify-center rounded-full bg-primary/10 text-3xl font-semibold text-primary"
-        aria-hidden
-      >
-        {initials(doctor.name)}
-      </div>
+    <article className="rounded-2xl border bg-card p-6 shadow-sm sm:p-8">
       <div className="min-w-0">
         <h3 className="text-xl font-semibold">{doctor.name}</h3>
         <p className="mt-1 text-base text-muted-foreground">
