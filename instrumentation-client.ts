@@ -8,7 +8,13 @@ if (POSTHOG_PROJECT_TOKEN) {
     api_host: "/ingest",
     ui_host: `https://${POSTHOG_REGION}.posthog.com`,
     defaults: "2026-08-30",
-    cookieless_mode: "always",
-    disable_session_recording: true,
+    session_recording: { maskAllInputs: true },
+    enable_recording_console_log: true,
+    capture_performance: { web_vitals: true, network_timing: true },
+    capture_heatmaps: true,
+    capture_dead_clicks: true,
+    capture_exceptions: true,
+    disable_web_experiments: false,
+    logs: { captureConsoleLogs: true },
   });
 }

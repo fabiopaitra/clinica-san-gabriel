@@ -10,7 +10,7 @@ The site has one goal: get patients to start a WhatsApp conversation. Analytics 
 
 | Tool | What it's for | Cookies | Loads |
 | --- | --- | --- | --- |
-| PostHog | Funnels, events, autocapture. **Source of truth for the funnel** | None (`cookieless_mode: "always"`) | Always, from `instrumentation-client.ts` |
+| PostHog | Funnels, events, autocapture, session replay, heatmaps, error tracking, surveys, feature flags, experiments, logs. **Source of truth for the funnel** | Yes | Always, from `instrumentation-client.ts` |
 | GA4 | Traffic sources, Google Ads conversions | Yes | Always, from `ThirdPartyAnalytics` |
 | Hotjar | Heatmaps and session recordings | Yes | Always, from `ThirdPartyAnalytics` |
 | Vercel Analytics | Page views | None | Always |
@@ -29,13 +29,15 @@ Set these in Vercel for **Production only**, so preview and dev traffic stays ou
 | `NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN` | PostHog → Project settings → Project token (`phc_…`) |
 | `NEXT_PUBLIC_POSTHOG_REGION` | `us` or `eu`, matching the PostHog Cloud region. Defaults to `us` |
 
-In PostHog, turn on **Cookieless server hash mode** (Project settings → Web analytics). Without it, PostHog drops every event from this site.
+The SDK asks for every feature, but PostHog only runs the ones switched on in the project. Turn on session replay, heatmaps, autocapture exceptions, web vitals and surveys in Project settings.
+
+Session replay masks every input, so nothing a visitor types reaches PostHog.
 
 PostHog traffic goes through the `/ingest` rewrite in `next.config.ts`, so ad blockers don't drop it.
 
 ## Cookies and LGPD
 
-- There's no cookie banner. GA4 and Hotjar set cookies for every visitor, on the basis of legitimate interest. This is a deliberate choice: the ANPD guidance favours consent for analytics cookies, so get legal sign-off before changing what we collect.
+- There's no cookie banner. PostHog, GA4 and Hotjar set cookies for every visitor, on the basis of legitimate interest. This is a deliberate choice: the ANPD guidance favours consent for analytics cookies, so get legal sign-off before changing what we collect.
 - Visitors opt out through their browser settings or the GA opt-out add-on, and can object through the clinic's contact details. The privacy policy (`app/politica-privacidade/page.tsx`, section 5) says so.
 - **Adding a new tool means updating that section of the privacy policy.**
 

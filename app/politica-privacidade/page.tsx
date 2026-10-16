@@ -80,14 +80,12 @@ export default function PoliticaPrivacidadePage() {
             ferramentas.
           </p>
           <ul>
+            <li>Vercel Analytics: estatísticas anônimas, sem cookies.</li>
             <li>
-              Vercel Analytics e PostHog: estatísticas anônimas, sem cookies.
-            </li>
-            <li>
-              Google Analytics e Hotjar: usam cookies, com base no nosso
-              legítimo interesse em melhorar o site. O Hotjar pode gravar a
-              navegação na página (cliques e rolagem), sem registrar textos
-              digitados.
+              PostHog, Google Analytics e Hotjar: usam cookies, com base no
+              nosso legítimo interesse em melhorar o site. O PostHog e o Hotjar
+              podem gravar a navegação na página (cliques e rolagem), sem
+              registrar textos digitados.
             </li>
           </ul>
           <p>
