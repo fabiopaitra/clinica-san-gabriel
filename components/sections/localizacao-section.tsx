@@ -4,49 +4,6 @@ import { CLINIC } from "@/lib/clinic-data";
 
 const DIRECTIONS_URL = `https://www.google.com/maps/dir//${encodeURIComponent(CLINIC.address.full)}`;
 
-function LocalBusinessJsonLd() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    name: CLINIC.name,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: CLINIC.address.street,
-      addressLocality: CLINIC.address.city,
-      addressRegion: CLINIC.address.state,
-      postalCode: CLINIC.address.zip,
-      addressCountry: "BR",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: CLINIC.address.geo.lat,
-      longitude: CLINIC.address.geo.lng,
-    },
-    telephone: CLINIC.phone,
-    url: CLINIC.domain,
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "08:00",
-        closes: "18:30",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Saturday",
-        opens: "08:00",
-        closes: "12:00",
-      },
-    ],
-  };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
-}
-
 export function LocalizacaoSection() {
   return (
     <section
@@ -54,7 +11,6 @@ export function LocalizacaoSection() {
       className="bg-muted/50"
       aria-labelledby="localizacao-title"
     >
-      <LocalBusinessJsonLd />
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <h2
           id="localizacao-title"

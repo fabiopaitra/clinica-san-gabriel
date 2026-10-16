@@ -79,7 +79,7 @@ function MobileNav() {
               asChild
             >
               <a
-                href={CLINIC.whatsapp}
+                href={CLINIC.whatsappBooking}
                 data-track-event="whatsapp_click"
                 data-track-location="mobile-menu"
                 target="_blank"
@@ -143,7 +143,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Button variant="whatsapp" size="lg" className="hidden sm:inline-flex" asChild>
             <a
-              href={CLINIC.whatsapp}
+              href={CLINIC.whatsappBooking}
               data-track-event="whatsapp_click"
               data-track-location="header"
               target="_blank"

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description:
     "Termos de Uso do site da Clínica San Gabriel. Regras de utilização e informações importantes sobre o conteúdo do site.",
   robots: { index: true, follow: true },
+  alternates: { canonical: "/termos-uso" },
 };
 
 export default function TermosUsoPage() {

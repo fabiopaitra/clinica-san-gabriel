@@ -45,12 +45,12 @@ PostHog traffic goes through the `/ingest` rewrite in `next.config.ts`, so ad bl
 
 | Event | Properties | Fired from |
 | --- | --- | --- |
-| `whatsapp_click` | `location`: `header`, `mobile-menu`, `hero`, `convenios`, `convenios-lista`, `footer`, `fab`; `convenio`: the plan's slug, only on `convenios-lista` | `data-track-*` attributes |
+| `whatsapp_click` | `location`: `header`, `mobile-menu`, `hero`, `corpo-clinico`, `convenios`, `convenios-lista`, `cnh`, `footer`, `fab`, `exame`, `especialidade`; `convenio`: the plan's slug, only on `convenios-lista`; `service`: the page's slug, only on `exame` and `especialidade` | `data-track-*` attributes |
 | `phone_click` | `location`: `hero`, `footer`, `termos-uso`, `politica-privacidade` | `data-track-*` attributes |
 | `directions_click` | `location`: `localizacao`, `localizacao-mapa`, `footer` | `data-track-*` attributes |
 | `email_click` | `location`: `termos-uso`, `politica-privacidade` | `data-track-*` attributes |
-| `nav_click` | `location`: `header`, `mobile-menu`; `target`: the link's `href` | `data-track-*` attributes |
-| `section_view` | `section`: the section `id`; `path` | `SectionViewTracker`, once per section per page view |
+| `nav_click` | `location`: `header`, `mobile-menu`, `especialidades`, `exames`, `relacionados`, `cnh`, `footer`; `target`: the link's `href` | `data-track-*` attributes |
+| `section_view` | `section`: the section `id`; `path` | `SectionViewTracker`, once per section per page view. Exam and specialty pages share section ids (`o-que-e`, `indicacoes`, `agendar`…), so filter by `path` |
 | `faq_open` | `question` | `FAQSection` |
 | `generate_lead` | `method`: `whatsapp`, `phone`, `directions`; `location`: same as the click | `CtaClickTracker`, after every `whatsapp_click`, `phone_click` and `directions_click` |
 | `exam_carousel_navigate` | `exam`: the exam's slug | `ExamsSection`, when the visitor swipes or taps a dot. Autoplay doesn't fire it |
@@ -87,6 +87,7 @@ On top of these, PostHog captures `$pageview` and autocaptures every click, and 
 | Section | `section` |
 | Exam | `exam` |
 | Convênio | `convenio` |
+| Service | `service` |
 | Question | `question` |
 
 **Funnel exploration:**
