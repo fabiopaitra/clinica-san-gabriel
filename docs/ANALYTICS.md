@@ -73,9 +73,38 @@ On top of these, PostHog captures `$pageview` and autocaptures every click, and 
 
 ### GA4
 
-1. Admin → Events → mark `generate_lead` as a **key event**. It covers WhatsApp, phone and directions clicks, and it's the event to import into Google Ads.
-2. Admin → Custom definitions → create event-scoped dimensions for `location`, `section`, `question`, `method`, `exam` and `convenio`. GA4 hides event properties in reports until you register them.
-3. Explore → Funnel exploration, with the steps `page_view` → `section_view` → `generate_lead`. Break down by `method` to compare channels.
+**Admin setup (once):**
+
+1. Admin → Data display → Events → turn on **Mark as key event** for `generate_lead`. It covers WhatsApp, phone and directions clicks, and it's the event to import into Google Ads. It's only listed once it has fired in production.
+2. Admin → Data display → Custom definitions → **Create custom dimension**, scope **Event**, one per property. GA4 hides event properties in reports until you register them, and dimensions aren't retroactive: they only fill in from the day you create them.
+
+| Dimension name | Event parameter |
+| --- | --- |
+| Location | `location` |
+| Method | `method` |
+| Section | `section` |
+| Exam | `exam` |
+| Convênio | `convenio` |
+| Question | `question` |
+
+**Funnel exploration:**
+
+1. Explore → **Funnel exploration**.
+2. Steps (pencil icon):
+   1. **Visitou o site:** event `page_view`
+   2. **Viu uma seção:** event `section_view`
+   3. **Lead:** event `generate_lead`
+3. Keep the defaults: **closed funnel**, with **Indirectly followed by** between steps.
+4. Breakdown: **Method** to compare WhatsApp, phone and directions, or **Location** to compare CTAs.
+5. Date range: from 2026-10-16 onward. Older dates have no `generate_lead`.
+
+Variations:
+
+- **Section → lead:** set step 2 to `section_view` with the condition `section = convenios` (or `faq`, `exames`).
+- **Show next action:** what people do after each step, like `faq_open` or `exam_carousel_navigate`.
+- **Show elapsed time:** how long a visitor takes from page view to lead.
+
+Explorations take 24–48h to show new data; use Reports → Realtime to confirm events arrive. They're private until you click **Share**.
 
 Ad blockers drop GA4 more often than PostHog, which goes through `/ingest`, so GA4's numbers will be lower. Use PostHog for the funnel, and GA4 for traffic sources and ads.
 
