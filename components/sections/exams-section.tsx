@@ -13,6 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { EXAMS } from "@/lib/clinic-data";
+import { trackEvent } from "@/lib/analytics";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   type CarouselApi,
@@ -21,7 +22,7 @@ import {
   CarouselDots,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { cn } from "@/lib/utils";
+import { cn, toSlug } from "@/lib/utils";
 
 const ICON_MAP = {
   Ruler,
@@ -101,18 +102,35 @@ function ExamCard({
 export function ExamsSection() {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const apiRef = React.useRef<CarouselApi | null>(null);
+  const userNavigatedRef = React.useRef(false);
   const onSelect = React.useCallback(() => {
     const api = apiRef.current;
-    if (api) setSelectedIndex(api.selectedScrollSnap());
+    if (!api) return;
+    const index = api.selectedScrollSnap();
+    setSelectedIndex(index);
+    if (!userNavigatedRef.current) return;
+    userNavigatedRef.current = false;
+    trackEvent("exam_carousel_navigate", { exam: toSlug(EXAMS[index].name) });
+  }, []);
+  const onPointerDown = React.useCallback(() => {
+    userNavigatedRef.current = true;
+  }, []);
+  const onDotClick = React.useCallback((event: React.MouseEvent) => {
+    if (!(event.target instanceof Element)) return;
+    if (event.target.closest('[role="tab"][aria-selected="false"]')) userNavigatedRef.current = true;
   }, []);
   const handleCarouselApi = React.useCallback((api: CarouselApi | undefined) => {
     const prev = apiRef.current;
-    if (prev) prev.off("select", onSelect);
+    if (prev) {
+      prev.off("select", onSelect);
+      prev.off("pointerDown", onPointerDown);
+    }
     apiRef.current = api ?? null;
     if (!api) return;
     onSelect();
     api.on("select", onSelect);
-  }, [onSelect]);
+    api.on("pointerDown", onPointerDown);
+  }, [onSelect, onPointerDown]);
 
   return (
     <section
@@ -160,7 +178,7 @@ export function ExamsSection() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselDots count={EXAMS.length} />
+            <CarouselDots count={EXAMS.length} onClickCapture={onDotClick} />
           </Carousel>
         </div>
 

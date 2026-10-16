@@ -43,13 +43,15 @@ PostHog traffic goes through the `/ingest` rewrite in `next.config.ts`, so ad bl
 
 | Event | Properties | Fired from |
 | --- | --- | --- |
-| `whatsapp_click` | `location`: `header`, `mobile-menu`, `hero`, `convenios`, `footer`, `fab` | `data-track-*` attributes |
+| `whatsapp_click` | `location`: `header`, `mobile-menu`, `hero`, `convenios`, `convenios-lista`, `footer`, `fab`; `convenio`: the plan's slug, only on `convenios-lista` | `data-track-*` attributes |
 | `phone_click` | `location`: `hero`, `footer`, `termos-uso`, `politica-privacidade` | `data-track-*` attributes |
 | `directions_click` | `location`: `localizacao`, `localizacao-mapa`, `footer` | `data-track-*` attributes |
 | `email_click` | `location`: `termos-uso`, `politica-privacidade` | `data-track-*` attributes |
 | `nav_click` | `location`: `header`, `mobile-menu`; `target`: the link's `href` | `data-track-*` attributes |
 | `section_view` | `section`: the section `id`; `path` | `SectionViewTracker`, once per section per page view |
 | `faq_open` | `question` | `FAQSection` |
+| `generate_lead` | `method`: `whatsapp`, `phone`, `directions`; `location`: same as the click | `CtaClickTracker`, after every `whatsapp_click`, `phone_click` and `directions_click` |
+| `exam_carousel_navigate` | `exam`: the exam's slug | `ExamsSection`, when the visitor swipes or taps a dot. Autoplay doesn't fire it |
 
 On top of these, PostHog captures `$pageview` and autocaptures every click, and GA4 captures `page_view` and its enhanced measurement events.
 
@@ -67,11 +69,13 @@ On top of these, PostHog captures `$pageview` and autocaptures every click, and 
 3. Break down by `location` to compare CTAs, or by `section` on step 2 to see which section leads to clicks.
 4. Save it to a dashboard named **Leads WhatsApp**.
 
+`generate_lead` fires on the same clicks as the **Contato** action, minus `email_click`. Build a funnel on one or the other, not both.
+
 ### GA4
 
-1. Admin → Events → mark `whatsapp_click` as a **key event**. Do the same for `phone_click` if calls count as leads.
-2. Admin → Custom definitions → create event-scoped dimensions for `location`, `section` and `question`. GA4 hides event properties in reports until you register them.
-3. Explore → Funnel exploration, with the steps `page_view` → `section_view` → `whatsapp_click`.
+1. Admin → Events → mark `generate_lead` as a **key event**. It covers WhatsApp, phone and directions clicks, and it's the event to import into Google Ads.
+2. Admin → Custom definitions → create event-scoped dimensions for `location`, `section`, `question`, `method`, `exam` and `convenio`. GA4 hides event properties in reports until you register them.
+3. Explore → Funnel exploration, with the steps `page_view` → `section_view` → `generate_lead`. Break down by `method` to compare channels.
 
 Ad blockers drop GA4 more often than PostHog, which goes through `/ingest`, so GA4's numbers will be lower. Use PostHog for the funnel, and GA4 for traffic sources and ads.
 

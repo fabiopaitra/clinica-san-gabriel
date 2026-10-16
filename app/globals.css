@@ -174,3 +174,7 @@
 .animate-convenios-scroll {
   animation: convenios-scroll 25s linear infinite;
 }
+.animate-convenios-scroll:hover,
+.animate-convenios-scroll:focus-within {
+  animation-play-state: paused;
+}

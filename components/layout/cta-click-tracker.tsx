@@ -4,6 +4,12 @@ import { useEffect } from "react";
 
 import { trackEvent, type EventProperties } from "@/lib/analytics";
 
+const LEAD_METHODS: Record<string, string> = {
+  whatsapp_click: "whatsapp",
+  phone_click: "phone",
+  directions_click: "directions",
+};
+
 function eventPropertiesFrom(dataset: DOMStringMap): EventProperties {
   const properties: EventProperties = {};
   for (const [key, value] of Object.entries(dataset)) {
@@ -20,7 +26,11 @@ function trackCtaClick(event: MouseEvent) {
   const cta = event.target.closest<HTMLElement>("[data-track-event]");
   if (!cta?.dataset.trackEvent) return;
 
-  trackEvent(cta.dataset.trackEvent, eventPropertiesFrom(cta.dataset));
+  const properties = eventPropertiesFrom(cta.dataset);
+  trackEvent(cta.dataset.trackEvent, properties);
+
+  const method = LEAD_METHODS[cta.dataset.trackEvent];
+  if (method) trackEvent("generate_lead", { method, location: properties.location });
 }
 
 export function CtaClickTracker() {
