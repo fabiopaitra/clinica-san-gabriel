@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description:
     "Política de Privacidade da Clínica San Gabriel. Informações sobre coleta, uso e proteção de dados pessoais em conformidade com a LGPD.",
   robots: { index: true, follow: true },
+  alternates: { canonical: "/politica-privacidade" },
 };
 
 export default function PoliticaPrivacidadePage() {

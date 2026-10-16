@@ -12,7 +12,9 @@ import {
   SectionViewTracker,
   ThirdPartyAnalytics,
 } from "@/components/layout";
+import { JsonLd } from "@/components/json-ld";
 import { CLINIC } from "@/lib/clinic-data";
+import { clinicSchema } from "@/lib/structured-data";
 import "./globals.css";
 
 const SHARE_TAGLINE = "Oftalmologia em Colombo, PR - Exames e consultas";
@@ -47,7 +49,6 @@ export const metadata: Metadata = {
     siteName: CLINIC.name,
     title: `${CLINIC.name} | Oftalmologia em Colombo, PR`,
     description: SHARE_TAGLINE,
-    url: CLINIC.domain,
     images: [
       {
         url: "/opengraph-image",
@@ -66,9 +67,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  alternates: {
-    canonical: CLINIC.domain,
-  },
 };
 
 export default function RootLayout({
@@ -79,6 +77,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${sourceSans.variable} font-sans antialiased`}>
+        <JsonLd data={clinicSchema()} />
         <SkipLink />
         <Header />
         <main id="main-content" tabIndex={-1}>

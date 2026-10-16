@@ -1,19 +1,31 @@
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/json-ld";
 import { HeroSection } from "@/components/sections/hero-section";
 import { SpecialtiesSection } from "@/components/sections/specialties-section";
 import { ExamsSection } from "@/components/sections/exams-section";
 import { ConveniosSection } from "@/components/sections/convenios-section";
 import { FAQSection } from "@/components/sections/faq-section";
 import { LocalizacaoSection } from "@/components/sections/localizacao-section";
+import { CorpoClinicoSection } from "@/components/sections/corpo-clinico-section";
+import { CnhSection } from "@/components/sections/cnh-section";
+import { faqSchema } from "@/lib/structured-data";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
     <div className="flex flex-col">
+      <JsonLd data={faqSchema()} />
       <HeroSection />
       <SpecialtiesSection />
+      <CorpoClinicoSection />
       <ExamsSection />
       <ConveniosSection />
       <LocalizacaoSection />
       <FAQSection />
+      <CnhSection />
 
       {/* Disclaimer médico - obrigatório para clínicas */}
       <section

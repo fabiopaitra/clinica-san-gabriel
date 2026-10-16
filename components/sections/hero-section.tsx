@@ -54,20 +54,19 @@ export function HeroSection() {
           id="hero-title"
           className="text-3xl font-bold tracking-tight text-white drop-shadow-lg sm:text-4xl lg:text-5xl"
         >
-          Clínica Médica San Gabriel
+          Oftalmologista em Colombo – PR
         </h1>
         <p className="mt-4 text-xl text-white/95 drop-shadow-md">
-          Saúde e Bem-Estar em Colombo
+          {CLINIC.name}, {CLINIC.address.landmark}
         </p>
         <p className="mt-6 text-lg leading-relaxed text-white/90 drop-shadow-md">
-          Atendimento humanizado, oftalmologia e exames completos. Parceria com
-          o Hospital de Olhos do Paraná para oferecer a melhor qualidade em
-          saúde ocular.
+          Atendimento humanizado, consultas e exames oftalmológicos completos.
+          Parceria com o Hospital de Olhos do Paraná.
         </p>
         <div className="mt-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:gap-4">
           <Button variant="default" size="xl" asChild>
             <a
-              href={CLINIC.whatsapp}
+              href={CLINIC.whatsappBooking}
               data-track-event="whatsapp_click"
               data-track-location="hero"
               target="_blank"

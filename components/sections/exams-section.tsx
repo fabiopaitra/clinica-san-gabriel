@@ -1,10 +1,12 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Contrast,
   Gauge,
+  IdCard,
   Map,
   Microscope,
   Move,
@@ -22,6 +24,7 @@ import {
   CarouselDots,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { examPath, examSlug } from "@/lib/service-pages";
 import { cn, toSlug } from "@/lib/utils";
 
 const ICON_MAP = {
@@ -33,6 +36,7 @@ const ICON_MAP = {
   Move,
   Gauge,
   Sparkles,
+  IdCard,
 } as const;
 
 function ExamCard({
@@ -88,6 +92,15 @@ function ExamCard({
                     <p className="mt-2 text-base text-muted-foreground leading-relaxed">
                       {exam.description}
                     </p>
+                    <Link
+                      href={examPath(examSlug(exam))}
+                      data-track-event="nav_click"
+                      data-track-location="exames"
+                      data-track-target={examPath(examSlug(exam))}
+                      className="mt-3 text-sm font-medium text-primary hover:underline"
+                    >
+                      Saiba mais<span className="sr-only"> sobre {exam.name}</span>
+                    </Link>
                   </CardContent>
                 </Card>
               </div>

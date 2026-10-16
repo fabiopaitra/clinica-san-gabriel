@@ -3,6 +3,9 @@
  * Usado em todo o site para consistência e manutenção fácil
  */
 
+const whatsappMessage = (text: string) =>
+  `https://wa.me/554133000606?text=${encodeURIComponent(text)}`;
+
 export const CLINIC = {
   name: "Clínica Médica San Gabriel",
   shortName: "San Gabriel",
@@ -10,8 +13,10 @@ export const CLINIC = {
   phone: "+554133000606",
   phoneFormatted: "(41) 3300-0606",
   whatsapp: "https://wa.me/554133000606",
-  whatsappMessage: (text: string) =>
-    `https://wa.me/554133000606?text=${encodeURIComponent(text)}`,
+  whatsappMessage,
+  whatsappBooking: whatsappMessage(
+    "Olá! Vim pelo site e gostaria de agendar uma consulta."
+  ),
 
   address: {
     street: "Rua André Skrok, 26, Sala 01",
@@ -111,7 +116,34 @@ export const EXAMS = [
     description:
       "Teste para avaliar o potencial máximo de visão do paciente.",
   },
+  {
+    lucideIcon: "IdCard",
+    name: "Exame de Vista para CNH",
+    description:
+      "Avaliação visual exigida pelo Detran para tirar ou renovar a habilitação.",
+  },
 ] as const;
+
+export const DOCTORS = [
+  {
+    name: "Dr. Sergio Luiz de Lara Júnior",
+    specialty: "Oftalmologia",
+    crm: "26528",
+    crmState: "PR",
+    rqe: "25634",
+    isTechnicalDirector: true,
+    areas: ["Catarata", "Ceratocone", "Cirurgia refrativa"],
+    education: [
+      { course: "Medicina", institution: "PUC-PR" },
+      {
+        course: "Residência em Oftalmologia",
+        institution: "Hospital de Olhos do Paraná",
+      },
+    ],
+  },
+] as const;
+
+export const TECHNICAL_DIRECTOR = DOCTORS.find((doctor) => doctor.isTechnicalDirector);
 
 /** Convênios aceitos – brand colors para uso em UI (pills/logos) */
 export const CONVENIOS = [
@@ -167,6 +199,7 @@ export const FAQ = [
 export const NAV_LINKS = [
   { href: "/", label: "Início" },
   { href: "/#especialidades", label: "Especialidades" },
+  { href: "/#corpo-clinico", label: "Corpo Clínico" },
   { href: "/#exames", label: "Exames" },
   { href: "/#convenios", label: "Convênios" },
   { href: "/#localizacao", label: "Localização" },

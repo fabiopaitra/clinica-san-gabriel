@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Check } from "lucide-react";
 import { SPECIALTIES } from "@/lib/clinic-data";
+import { SPECIALTY_PAGES, specialtyPath } from "@/lib/service-pages";
 
 const specialty = SPECIALTIES.ophthalmology;
 
@@ -45,6 +47,22 @@ export function SpecialtiesSection() {
                     aria-hidden
                   />
                   <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-base font-medium">Conheça também:</p>
+            <ul className="mt-3 flex flex-wrap gap-3" role="list">
+              {SPECIALTY_PAGES.map((page) => (
+                <li key={page.slug}>
+                  <Link
+                    href={specialtyPath(page.slug)}
+                    data-track-event="nav_click"
+                    data-track-location="especialidades"
+                    data-track-target={specialtyPath(page.slug)}
+                    className="inline-flex rounded-full border border-primary/30 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/5 hover:underline"
+                  >
+                    {page.name}
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -5,7 +5,7 @@ import { CLINIC } from "@/lib/clinic-data";
 export function WhatsAppFAB() {
   return (
     <Link
-      href={CLINIC.whatsapp}
+      href={CLINIC.whatsappBooking}
       data-track-event="whatsapp_click"
       data-track-location="fab"
       target="_blank"

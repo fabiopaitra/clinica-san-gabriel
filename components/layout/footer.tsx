@@ -2,7 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Clock } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
-import { CLINIC } from "@/lib/clinic-data";
+import { CLINIC, TECHNICAL_DIRECTOR } from "@/lib/clinic-data";
+import { EXAM_PAGES, SPECIALTY_PAGES, examPath, specialtyPath } from "@/lib/service-pages";
+
+const FOOTER_LINKS = [
+  ...SPECIALTY_PAGES.map((page) => ({ href: specialtyPath(page.slug), label: page.name })),
+  ...EXAM_PAGES.map((page) => ({ href: examPath(page.slug), label: page.name })),
+];
 
 const DIRECTIONS_URL = `https://www.google.com/maps/dir//${encodeURIComponent(CLINIC.address.full)}`;
 
@@ -40,11 +46,19 @@ export function Footer() {
           <div>
             <h3 className="text-base font-semibold mb-4">Serviços</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Consulta Oftalmológica</li>
-              <li>Paquimetria</li>
-              <li>Topografia Corneana</li>
-              <li>Mapeamento de Retina</li>
-              <li>Microscopia</li>
+              {FOOTER_LINKS.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    data-track-event="nav_click"
+                    data-track-location="footer"
+                    data-track-target={link.href}
+                    className="hover:text-primary hover:underline"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -91,7 +105,7 @@ export function Footer() {
               </p>
               <p>
                 <a
-                  href={CLINIC.whatsapp}
+                  href={CLINIC.whatsappBooking}
                   data-track-event="whatsapp_click"
                   data-track-location="footer"
                   target="_blank"
@@ -131,10 +145,19 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} {CLINIC.name}. Todos os direitos
-            reservados.
-          </p>
+          <div className="space-y-1 text-xs text-muted-foreground">
+            {TECHNICAL_DIRECTOR && (
+              <p>
+                Responsável técnico: {TECHNICAL_DIRECTOR.name} · CRM-
+                {TECHNICAL_DIRECTOR.crmState} {TECHNICAL_DIRECTOR.crm} · RQE{" "}
+                {TECHNICAL_DIRECTOR.rqe}
+              </p>
+            )}
+            <p>
+              © {new Date().getFullYear()} {CLINIC.name}. Todos os direitos
+              reservados.
+            </p>
+          </div>
           <div className="flex gap-6">
             <Link
               href="/politica-privacidade"
