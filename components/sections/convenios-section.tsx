@@ -4,6 +4,31 @@ import React from "react";
 import Link from "next/link";
 import { WhatsAppIcon } from "@/components/icons/whatsapp-icon";
 import { CONVENIOS, CLINIC } from "@/lib/clinic-data";
+import { toSlug } from "@/lib/utils";
+
+function ConvenioLinks({ hidden = false }: { hidden?: boolean }) {
+  return (
+    <div className="flex items-center gap-20 pr-20" aria-hidden={hidden || undefined}>
+      {CONVENIOS.map((convenio) => (
+        <a
+          key={convenio.name}
+          href={CLINIC.whatsappMessage(
+            `Olá, gostaria de agendar uma consulta pelo convênio ${convenio.name}.`
+          )}
+          data-track-event="whatsapp_click"
+          data-track-location="convenios-lista"
+          data-track-convenio={toSlug(convenio.name)}
+          target="_blank"
+          rel="noopener noreferrer"
+          tabIndex={hidden ? -1 : undefined}
+          className="whitespace-nowrap rounded-sm text-lg font-medium text-neutral-400 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          {convenio.name}
+        </a>
+      ))}
+    </div>
+  );
+}
 
 export function ConveniosSection() {
   return (
@@ -42,26 +67,17 @@ export function ConveniosSection() {
               <WhatsAppIcon className="size-5 shrink-0" />
             </Link>
           </div>
-          <p className="sr-only">
-            Convênios aceitos: {CONVENIOS.map((c) => c.name).join(", ")}.
-          </p>
         </div>
 
         {/* Horizontal scrolling logos: full width, no padding */}
         <div
           className="flex min-h-[60px] w-full items-center overflow-hidden"
-          aria-hidden="true"
+          role="region"
+          aria-label="Convênios aceitos"
         >
-          <span className="sr-only">Convênios aceitos</span>
-          <div className="flex w-max animate-convenios-scroll items-center gap-20 pr-20">
-            {[...CONVENIOS, ...CONVENIOS].map((convenio, i) => (
-              <span
-                key={`${convenio.name}-${i}`}
-                className="whitespace-nowrap text-lg font-medium text-neutral-400"
-              >
-                {convenio.name}
-              </span>
-            ))}
+          <div className="flex w-max animate-convenios-scroll items-center">
+            <ConvenioLinks />
+            <ConvenioLinks hidden />
           </div>
         </div>
       </div>
